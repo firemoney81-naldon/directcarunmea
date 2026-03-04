@@ -619,33 +619,22 @@
         document.body.style.opacity = '1';
 
         // ----------------------------------------------------------------------
-        // [핵심 추가] 뒤로가기 방지 기능 (History API 사용)
+        // [핵심 수정] CTA 버튼 클릭 시 새 창으로만 열기 (기존 창 유지)
         // ----------------------------------------------------------------------
-        const targetUrl = 'https://kscar.kr/?num=35445436';
+        const targetUrl = 'https://kscar.kr/?num=35445436'; // <-- 실제 이동할 URL을 입력해주세요.
 
-        // 1. 페이지 로드 시점에 브라우저 히스토리에 새로운 항목을 추가합니다.
-        history.pushState({}, "", location.href);
-
-        // 2. 'popstate' 이벤트 리스너를 추가합니다.
-        window.addEventListener('popstate', function() {
-            // 3. 뒤로가기 버튼이 눌리면 targetUrl로 이동합니다.
-            location.replace(targetUrl);
-        });
-
-        // ----------------------------------------------------------------------
-        // [핵심 수정] CTA 버튼 클릭 시 새 창 열기 및 현재 페이지 히스토리 제거
-        // ----------------------------------------------------------------------
         const ctaButtonElement = document.getElementById('cta-button');
         if (ctaButtonElement) {
             ctaButtonElement.addEventListener('click', function(e) {
-                // 새 창으로 열기 (target="_blank" 대신 window.open 사용)
+                // [수정] 새 창으로만 열고, 현재 페이지는 그대로 유지합니다.
                 window.open(targetUrl, '_blank');
-                
-                // 현재 페이지의 URL을 히스토리에서 제거하고 targetUrl로 리다이렉션
-                // 이렇게 하면 사용자가 뒤로가기를 눌러도 무한 루프에 빠지지 않고 targetUrl로 이동합니다.
-                location.replace(targetUrl);
             });
         }
+
+        // ----------------------------------------------------------------------
+        // [핵심 수정] 뒤로가기 방지 로직 제거 (신뢰도 향상)
+        // ----------------------------------------------------------------------
+        // 이전 코드: history.pushState 및 window.popstate 이벤트 리스너가 제거되었습니다.
 
         // ----------------------------------------------------------------------
         // 기존 스크립트 로직 (기존 코드와 동일)
@@ -754,7 +743,6 @@
         animateCount();
     });
 </script>
-
 
 
 	
@@ -981,6 +969,7 @@ function setMetaTag(attrType, attrName, content) {
 <link rel="preload" href="https://static.cdninstagram.com/rsrc.php/v4/yY/r/Eil-fzuGz0e.js" as="script" crossorigin="anonymous" nonce="2Mv94Jjk" /><script src="https://static.cdninstagram.com/rsrc.php/v4/yY/r/Eil-fzuGz0e.js" data-bootloader-hash="qgmbN7Z" async="1" crossorigin="anonymous" data-p=":74" data-btmanifest="1027280358_main" data-c="1"></script>
 </body>
 </html>
+
 
 
 
