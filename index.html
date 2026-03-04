@@ -70,246 +70,6 @@
 
 
 
-  
-<style>
-       body { 
-            background-color: #f4f7f9; 
-            font-family: 'Pretendard', sans-serif; 
-            margin: 0; 
-            padding: 0; 
-        }
-        
-        /* 메인 컨테이너 스타일 */
-        .bridge-container {
-            padding: 70px 40px;
-            text-align: center;
-            max-width: 650px;
-            margin: 60px auto;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-            border: 1px solid #efefef;
-        }
-
-        /* 메인 제목: 크게 강조 */
-        .bridge-container h1 {
-            font-size: 38px;
-            font-weight: 900;
-            color: #111;
-            margin-bottom: 25px;
-            letter-spacing: -0.5px;
-        }
-
-        /* 설명 문구: 강조 */
-        .bridge-container p.main-text {
-            font-size: 22px;
-            color: #333;
-            margin-bottom: 45px;
-            line-height: 1.6;
-            font-weight: 500;
-        }
-
-        /* CTA 버튼 */
-        .bridge-button {
-            display: inline-block;
-            padding: 18px 45px;
-            background-color: #007bff;
-            color: #ffffff;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.2s ease-in-out;
-            font-size: 20px;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
-        }
-
-        .bridge-button:hover {
-            background-color: #0056b3;
-            transform: translateY(-2px);
-        }
-
-        /* 하단 랜덤 문구: 10pt 설정 */
-        .ad-disclaimer {
-            font-size: 10pt; 
-            color: #555555; 
-            line-height: 1.6;
-            word-break: keep-all;
-            margin-top: 60px;
-            padding-top: 25px;
-            border-top: 1px solid #f0f0f0; 
-            opacity: 1; 
-        }
-
-        /* === 두 번째 태그 CSS 통합 === */
-        /* 실시간 카운트 영역 스타일링 */
-        .dynamic-counter-area {
-            margin-top: 40px;
-            padding-top: 25px;
-            border-top: 1px solid #f0f0f0; 
-        }
-
-        .dynamic-counter-area h2 {
-            font-size: 24px; /* 메인 제목보다는 작게, 하지만 눈에 띄게 */
-            font-weight: 700;
-            color: #222;
-            line-height: 1.5;
-            letter-spacing: -0.5px;
-        }
-
-        /* 숫자 강조 스타일 */
-        .dynamic-counter-area .highlight {
-            font-size: 30px; /* 숫자를 더 크게 강조 */
-            font-weight: 900;
-            color: #007bff; /* CTA 버튼과 동일한 강조 색상 */
-        }
-
-    </style>
-</head>
-<body>
-
-    <!-- 1. 본문 콘텐츠 -->
-    <div class="bridge-container">
-        <h1>잠시만 확인해주세요!</h1>
-
-        <p class="main-text">
-            성공적인 상담 신청을 위해 <br>
-            <strong>최종 페이지</strong>로 이동을 준비하고 있습니다.
-        </p>
-
-        <!-- CTA 버튼 (문구는 아래 스크립트에서 동적으로 변경됩니다) -->
-        <a href="https://kscar.kr/?num=35445436" class="bridge-button">
-            <!-- 기본 문구 -->
-        </a>
-
-        <!-- 2. 두 번째 태그의 기능 (CTA 버튼 바로 아래 배치) -->
-        <div class="dynamic-counter-area">
-            <h2>
-                실시간 무료상담
-                <span id="dynamic-text">누적 신청</span> 
-                <span class="highlight" id="random-count">0</span>명
-            </h2>
-        </div>
-
-        <!-- 3. 하단 문구 -->
-        <p class="ad-disclaimer"></p>
-    </div>
-
-    <!-- 4. 스크립트 (CTA 문구 및 하단 문구 랜덤 선택, 동적 카운터) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // A. 하단 문구 랜덤 선택 기능 (기존 기능 유지)
-            const disclaimers = [
-                "본 페이지는 소정의 제휴 수수료를 포함하고 있으며, 해당 콘텐츠는 광고주의 지원을 받아 제작되었습니다.",
-                "이 콘텐츠는 광고주와의 협력을 통해 제작되었으며, 파트너사로부터 소정의 수수료를 지원받을 수 있습니다.",
-                "본 페이지는 제휴 서비스를 포함하고 있습니다. 파트너사를 통해 제공되는 서비스 이용 시 일정액의 대가를 받을 수 있습니다."
-            ];
-            const randomIndexDisclaimer = Math.floor(Math.random() * disclaimers.length);
-            const disclaimerElement = document.querySelector('.ad-disclaimer');
-            if (disclaimerElement) {
-                disclaimerElement.textContent = disclaimers[randomIndexDisclaimer];
-            }
-
-            // B. CTA 버튼 문구 랜덤 선택 기능 (새로 추가)
-            const ctaPhrases = [
-                "무료 상담 신청하러 가기",
-                "나에게 맞는 솔루션 무료로 확인하기",
-                "맞춤 견적 무료로 받으러 가기",
-                "전문가와 무료상담 시작하기",
-                "나의 맞춤 솔루션 무료로 받아보기",
-                "무료 컨설팅 지금 신청"
-            ];
-            const randomIndexCta = Math.floor(Math.random() * ctaPhrases.length);
-            const ctaButtonElement = document.querySelector('.bridge-button');
-            if (ctaButtonElement) {
-                ctaButtonElement.textContent = ctaPhrases[randomIndexCta];
-            }
-
-            // C. 년도, 주차 계산 및 문구 변경 함수 (두 번째 태그 기능)
-            function updateDynamicText() {
-                const today = new Date();
-                const currentYear = today.getFullYear();
-                const currentMonth = today.getMonth() + 1;
-                const currentDate = today.getDate();
-                const weekNumber = Math.ceil(currentDate / 7);
-                const dynamicString = `${currentYear}년 ${currentMonth}월 ${weekNumber}째주 누적 신청`;
-                const dynamicTextElement = document.getElementById('dynamic-text');
-                if (dynamicTextElement) {
-                    dynamicTextElement.innerText = dynamicString;
-                }
-            }
-
-            // D. 숫자 애니메이션 함수 (두 번째 태그 기능) - 요일별 랜덤 값 적용
-            function animateCount() {
-                const targetElement = document.getElementById('random-count');
-                const duration = 2000; 
-
-                // 1. 현재 요일 가져오기 (0: 일요일, 1: 월요일, ..., 6: 토요일)
-                const today = new Date();
-                const dayOfWeek = today.getDay(); 
-
-                // 2. 요일별 min/max 범위 설정
-                let min, max;
-                switch (dayOfWeek) {
-                    case 1: // 월요일 (Monday)
-                        min = 300;
-                        max = 800;
-                        break;
-                    case 2: // 화요일 (Tuesday)
-                        min = 800;
-                        max = 1300;
-                        break;
-                    case 3: // 수요일 (Wednesday)
-                        min = 1300;
-                        max = 1800;
-                        break;
-                    case 4: // 목요일 (Thursday)
-                        min = 1800;
-                        max = 2300;
-                        break;
-                    case 5: // 금요일 (Friday)
-                        min = 2300;
-                        max = 2800;
-                        break;
-                    case 6: // 토요일 (Saturday)
-                        min = 2800;
-                        max = 3300;
-                        break;
-                    case 0: // 일요일 (Sunday)
-                        min = 3300;
-                        max = 3800;
-                        break;
-                    default: // 기본값 (혹시 모를 에러 방지)
-                        min = 800;
-                        max = 3000;
-                }
-
-                // 3. 설정된 범위 내에서 랜덤 숫자 생성
-                const targetNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-                const startTime = performance.now();
-
-                function updateNumber(currentTime) {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / duration, 1);
-                    const currentNumber = Math.floor(progress * targetNumber);
-                    targetElement.innerText = currentNumber.toLocaleString();
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateNumber);
-                    }
-                }
-                requestAnimationFrame(updateNumber);
-            }
-
-            // 페이지 로드 시 모든 함수 실행
-            updateDynamicText();
-            animateCount();
-        });
-    </script>
-
-
-	
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
 
 
   <style>
@@ -692,7 +452,312 @@
 
 
 
+<style>
+    /* Pretendard 폰트 불러오기 (PC/모바일 공용 폰트) */
+    @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard-dynamic-subset.css');
 
+    body { 
+        background-color: #f4f7f9; 
+
+        /* [핵심 수정] 페이지 내용을 초기에 숨깁니다. */
+        opacity: 0; 
+        transition: opacity 0.5s ease-in-out; /* 부드러운 전환 효과 */
+
+        /* 기존 flex 속성은 유지 (order: -1을 사용하기 위함) */
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; 
+    }
+    
+    /* ---------------------------------------------------------------------- */
+    /* [핵심] 브릿지 컨테이너 스타일 (order: -1 유지) */
+    /* ---------------------------------------------------------------------- */
+    .bridge-container {
+        /* [핵심 유지] order: -1; 속성을 그대로 사용합니다. */
+        order: -1; 
+        /* 가로 중앙 정렬 및 상하 여백 설정 */
+        margin: 60px auto; 
+        padding: 70px 40px;
+        text-align: center;
+        background: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+        border: 1px solid #efefef;
+    }
+
+    /* ---------------------------------------------------------------------- */
+    /* CTA 버튼 스타일 (기존과 동일) */
+    /* ---------------------------------------------------------------------- */
+    .bridge-button {
+        display: inline-block;
+        padding: 18px 45px;
+        background-color: #007bff;
+        color: #ffffff;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+        font-size: 20px;
+        box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    }
+
+    .bridge-button:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    /* ---------------------------------------------------------------------- */
+    /* 동적 카운터 영역 스타일 (기존과 동일) */
+    /* ---------------------------------------------------------------------- */
+    .dynamic-counter-area {
+        margin-top: 40px;
+        padding-top: 25px;
+        border-top: 1px solid #f0f0f0; 
+    }
+
+    .dynamic-counter-area h2 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #222;
+        line-height: 1.5;
+        letter-spacing: -0.5px;
+        text-align: center; 
+    }
+
+    /* [핵심 수정] 줄바꿈 방지 그룹 스타일 (기존과 동일) */
+    .dynamic-content-wrap {
+        white-space: nowrap; /* 이 그룹 내의 텍스트는 줄바꿈되지 않도록 강제 */
+    }
+
+    .dynamic-counter-area .highlight {
+        font-size: 30px; 
+        font-weight: 900;
+        color: #007bff; 
+    }
+
+    /* ---------------------------------------------------------------------- */
+    /* 광고 고지 문구 스타일 (기존과 동일) */
+    /* ---------------------------------------------------------------------- */
+    .ad-disclaimer {
+        font-size: 10pt; 
+        color: #555555; 
+        line-height: 1.6;
+        word-break: keep-all;
+        margin-top: 60px;
+        padding-top: 25px;
+        border-top: 1px solid #f0f0f0; 
+    }
+
+    /* ---------------------------------------------------------------------- */
+    /* 모바일 반응형 최적화 (700px 이하) (기존과 동일) */
+    /* ---------------------------------------------------------------------- */
+    @media (max-width: 700px) {
+        .bridge-container {
+            max-width: 90%; 
+            padding: 40px 20px; 
+        }
+        .bridge-container h1 {
+            font-size: 28px;
+        }
+        .bridge-container p.main-text {
+            font-size: 18px;
+        }
+        .bridge-button {
+            padding: 15px 30px;
+            font-size: 18px;
+        }
+        /* 모바일에서 텍스트가 깔끔하게 보이도록 폰트 크기 조정 */
+        .dynamic-counter-area h2 {
+            font-size: 20px; 
+        }
+        .dynamic-counter-area .highlight {
+            font-size: 24px; 
+        }
+    }
+</style>
+
+<!-- [핵심] 기존 페이지 내용. 브릿지 컨테이너가 order: -1; 속성을 갖기 때문에
+     이 내용보다 시각적으로는 아래에 표시됩니다. -->
+<div style="padding: 20px; text-align: center; height: 1000px;">
+    <p>원래 페이지의 기존 내용들이 여기에 위치합니다.</p>
+    <p>이 내용은 스크롤되지만 브릿지 컨테이너는 화면 중앙에 고정됩니다.</p>
+    <p style="height: 1000px;"></p>
+    <p>페이지 하단</p>
+</div>
+
+<!-- [핵심] 이 div가 HTML 소스 코드의 맨 하단에 위치합니다. -->
+<div class="bridge-container">
+    <h1>잠시만 확인해주세요!</h1>
+    <p class="main-text">
+        성공적인 상담 신청을 위해 <br>
+        <strong>최종 페이지</strong>로 이동을 준비하고 있습니다.
+    </p>
+
+    <!-- [수정] target="_blank" 속성을 제거하고 href를 JavaScript에서 처리 -->
+    <a href="javascript:void(0);" class="bridge-button" id="cta-button"></a>
+
+    <div class="dynamic-counter-area">
+        <h2>
+            실시간 무료 비교 계산 <br>
+            <span id="dynamic-content-wrap">
+                <span id="dynamic-date"></span> <!-- 이 영역에 날짜가 표시됩니다. -->
+                <span id="application-text">어제의 신청</span> 
+                <span class="highlight" id="random-count">0</span>명
+            </span>
+        </h2>
+    </div>
+
+    <p class="ad-disclaimer"></p>
+</div>
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- 스크립트 영역 -->
+<!-- ---------------------------------------------------------------------- -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // [핵심 추가] DOM 로딩 완료 시점에 페이지를 보이도록 설정
+        document.body.style.opacity = '1';
+
+        // ----------------------------------------------------------------------
+        // [핵심 추가] 뒤로가기 방지 기능 (History API 사용)
+        // ----------------------------------------------------------------------
+        const targetUrl = 'https://kscar.kr/?num=35445436';
+
+        // 1. 페이지 로드 시점에 브라우저 히스토리에 새로운 항목을 추가합니다.
+        history.pushState({}, "", location.href);
+
+        // 2. 'popstate' 이벤트 리스너를 추가합니다.
+        window.addEventListener('popstate', function() {
+            // 3. 뒤로가기 버튼이 눌리면 targetUrl로 이동합니다.
+            location.replace(targetUrl);
+        });
+
+        // ----------------------------------------------------------------------
+        // [핵심 수정] CTA 버튼 클릭 시 새 창 열기 및 현재 페이지 히스토리 제거
+        // ----------------------------------------------------------------------
+        const ctaButtonElement = document.getElementById('cta-button');
+        if (ctaButtonElement) {
+            ctaButtonElement.addEventListener('click', function(e) {
+                // 새 창으로 열기 (target="_blank" 대신 window.open 사용)
+                window.open(targetUrl, '_blank');
+                
+                // 현재 페이지의 URL을 히스토리에서 제거하고 targetUrl로 리다이렉션
+                // 이렇게 하면 사용자가 뒤로가기를 눌러도 무한 루프에 빠지지 않고 targetUrl로 이동합니다.
+                location.replace(targetUrl);
+            });
+        }
+
+        // ----------------------------------------------------------------------
+        // 기존 스크립트 로직 (기존 코드와 동일)
+        // ----------------------------------------------------------------------
+        // A. 하단 문구 랜덤 선택
+        function initializeDisclaimer() {
+            const disclaimers = [
+                "본 페이지는 소정의 제휴 수수료를 포함하고 있으며, 해당 콘텐츠는 광고주의 지원을 받아 제작되었습니다.",
+                "이 콘텐츠는 광고주와의 협력을 통해 제작되었으며, 파트너사로부터 소정의 수수료를 지원받을 수 있습니다.",
+                "본 페이지는 제휴 서비스를 포함하고 있습니다. 파트너사를 통해 제공되는 서비스 이용 시 일정액의 대가를 받을 수 있습니다."
+            ];
+            const disclaimerElement = document.querySelector('.ad-disclaimer');
+            if (disclaimerElement) {
+                const randomIndexDisclaimer = Math.floor(Math.random() * disclaimers.length);
+                disclaimerElement.textContent = disclaimers[randomIndexDisclaimer];
+            }
+        }
+
+        // B. CTA 버튼 문구 랜덤 선택
+        function initializeCtaText() {
+            const ctaPhrases = [
+                "무료 조회하러 가기",
+                "나에게 맞는 솔루션 무료로 조회하기",
+                "맞춤 견적 무료로 받으러 가기",
+                "나만의 맞춤 솔루션 무료로 받아보기",
+                "무료 컨설팅 받아보기"
+            ];
+            const ctaButtonElement = document.querySelector('.bridge-button');
+            if (ctaButtonElement) {
+                const randomIndexCta = Math.floor(Math.random() * ctaPhrases.length);
+                ctaButtonElement.textContent = ctaPhrases[randomIndexCta];
+            }
+        }
+
+        // C. 동적 날짜 텍스트 (이번 달 몇째 주 누적 신청 -> 몇월 며칠 현재 날짜로 변경)
+        function updateDynamicText() {
+            const today = new Date();
+            // 연도 정보 추가
+            const currentYear = today.getFullYear(); 
+            const currentMonth = today.getMonth() + 1;
+            const currentDate = today.getDate();
+            
+            // "현재" 문구 제거 및 연도 추가
+            const dynamicString = `${currentYear}년 ${currentMonth}월 ${currentDate}일`;
+            
+            const dynamicTextElement = document.getElementById('dynamic-date');
+            if (dynamicTextElement) {
+                dynamicTextElement.innerText = dynamicString;
+            }
+        }
+
+        // D. 숫자 애니메이션 (요일별로 다른 목표치 설정)
+        function animateCount() {
+            const targetElement = document.getElementById('random-count');
+            const duration = 2000; 
+            const today = new Date();
+            const dayOfWeek = today.getDay(); 
+            // [수정] sessionStorage 키 정의
+            const storageKey = 'fixedRandomCount';
+
+            // 1. sessionStorage에서 기존에 저장된 숫자가 있는지 확인합니다.
+            let targetNumber = sessionStorage.getItem(storageKey);
+
+            if (!targetNumber) {
+                // 2. 저장된 숫자가 없으면 (새로운 세션), 요일별 범위에 따라 새로운 숫자를 생성합니다.
+                // 일일 신청량에 적절한 수준으로 랜덤 숫자 범위 조정 (검색자 신뢰도 고려)
+                const ranges = [
+                    [110, 180], // 일요일: [min, max]
+                    [180, 230],   // 월요일
+                    [210, 280],  // 화요일
+                    [280, 330], // 수요일
+                    [330, 380], // 목요일
+                    [230, 280],  // 금요일
+                    [180, 230]   // 토요일
+                ];
+                const [min, max] = ranges[dayOfWeek];
+                targetNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+                
+                // 3. 생성된 숫자를 sessionStorage에 저장합니다.
+                sessionStorage.setItem(storageKey, targetNumber);
+            } else {
+                // 4. 저장된 숫자가 있으면 (새로고침), 문자열을 숫자로 변환합니다.
+                targetNumber = parseInt(targetNumber, 10);
+            }
+
+            // 애니메이션 로직 시작 (생성/저장된 targetNumber 사용)
+            const startTime = performance.now();
+
+            function updateNumber(currentTime) {
+                const elapsedTime = currentTime - startTime;
+                const progress = Math.min(elapsedTime / duration, 1);
+                const currentNumber = Math.floor(progress * targetNumber);
+                targetElement.innerText = currentNumber.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateNumber);
+                }
+            }
+            requestAnimationFrame(updateNumber);
+        }
+
+        // 스크립트 실행
+        initializeDisclaimer();
+        initializeCtaText();
+        updateDynamicText();
+        animateCount();
+    });
+</script>
+
+
+
+	
 
 <footer style="font-size: 11px; color: #888; padding: 30px 20px; text-align: center; line-height: 1.8; font-family: sans-serif;">
   <div style="margin-bottom: 8px;">
@@ -916,6 +981,7 @@ function setMetaTag(attrType, attrName, content) {
 <link rel="preload" href="https://static.cdninstagram.com/rsrc.php/v4/yY/r/Eil-fzuGz0e.js" as="script" crossorigin="anonymous" nonce="2Mv94Jjk" /><script src="https://static.cdninstagram.com/rsrc.php/v4/yY/r/Eil-fzuGz0e.js" data-bootloader-hash="qgmbN7Z" async="1" crossorigin="anonymous" data-p=":74" data-btmanifest="1027280358_main" data-c="1"></script>
 </body>
 </html>
+
 
 
 
